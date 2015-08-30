@@ -17,11 +17,11 @@ A more detailed description of Stabilizer is available in the
 ASPLOS 2013 in March.
 
 ### Requirements
-Stabilizer requires [LLVM 3.1](http://llvm.org/releases/download.html#3.1). 
+Stabilizer requires [LLVM 3.6](http://llvm.org/releases/download.html#3.6.2).
 Stabilizer runs on OSX and Linux, and supports x86, x86_64, and PowerPC.
 
-Stabilizer requires LLVM 3.1. Follow the directions
-[here](http://clang.llvm.org/get_started.html) to build LLVM 3.1 and the Clang
+Stabilizer requires LLVM 3.6. Follow the directions
+[here](http://clang.llvm.org/get_started.html) to build LLVM 3.6 and the Clang
 front-end. Stabilizer's build system assumes LLVM include files will be
 accessible through your default include path.
 

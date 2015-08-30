@@ -1,19 +1,19 @@
 #define DEBUG_TYPE "stabilizer"
 
 #include <llvm/Pass.h>
-#include <llvm/Module.h>
-#include <llvm/Constants.h>
-#include <llvm/Intrinsics.h>
-#include <llvm/Instructions.h>
+#include <llvm/IR/Module.h>
+#include <llvm/IR/Constants.h>
+#include <llvm/IR/Intrinsics.h>
+#include <llvm/IR/Instructions.h>
 
 #include <llvm/Support/raw_ostream.h>
 #include <llvm/Support/CommandLine.h>
-#include <llvm/Support/TypeBuilder.h>
+#include <llvm/IR/TypeBuilder.h>
 
 #include <map>
 #include <set>
 #include <vector>
-#include <llvm/Intrinsics.gen>
+#include <llvm/IR/Intrinsics.gen>
 
 using namespace llvm;
 using namespace llvm::types;
@@ -81,7 +81,7 @@ struct StabilizerPass : public ModulePass {
      * \returns The width of a pointer in bits
      */
     Type* getIntptrType(Module& m) {
-        if(m.getPointerSize() == Module::Pointer32) {
+        if(m.getDataLayout()->getPointerSizeInBits() == 32) {
             return Type::getInt32Ty(m.getContext());
         } else {
             return Type::getInt64Ty(m.getContext());
@@ -89,7 +89,7 @@ struct StabilizerPass : public ModulePass {
     }
     
     size_t getIntptrSize(Module& m) {
-        if(m.getPointerSize() == Module::Pointer32) {
+        if(m.getDataLayout()->getPointerSizeInBits() == 32) {
             return 32;
         } else {
             return 64;
